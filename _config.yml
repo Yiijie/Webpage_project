@@ -1,6 +1,6 @@
 title: NetSci2025
 description: Jekyll theme for a conference website
-baseurl: ""
+baseurl: "/Webpage_project"
 url: https://Yiijie.github.io/Webpage_project
 
 theme: jekyll-nagymaros
