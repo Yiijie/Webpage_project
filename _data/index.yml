@@ -1,0 +1,4 @@
+buttons:
+  - text: Submit an abstract
+    url: https://github.com/piazzai/jekyll-nagymaros
+    disabled: false

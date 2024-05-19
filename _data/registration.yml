@@ -1,0 +1,4 @@
+buttons:
+  - text: Register now
+    url: https://github.com/piazzai/jekyll-nagymaros
+    disabled: false
