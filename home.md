@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Home
-description: 15-19 June 2025, the Netherlands
+description: TBA, TBD
 navorder: 1
 ---
 
