@@ -30,6 +30,13 @@ layout: default
         padding: 50px 0;
     }
 
+    .speakers-content {
+        background-color: #1c1c3c;
+        color: white;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
     .speaker-card {
         display: inline-block;
         margin: 15px;
@@ -57,10 +64,10 @@ layout: default
 
 <main class="my-4">
     <div class="speakers-section">
-        <div class="container mt-5 bg-gray-2 rounded p-4">
+        <div class="container mt-5 speakers-content">
             {{ content }}
         </div>
-    
+
         <div class="speaker-card">
             <img src="{{ site.baseurl }}/assets/images/tony_selby.png" alt="Tony Selby">
             <h3>TBA</h3>
