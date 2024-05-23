@@ -6,7 +6,6 @@ layout: default
 {% include header.html %}
 
 <style>
-
 .navbar {
     position: fixed;
     top: 0;
@@ -19,7 +18,6 @@ layout: default
     padding-left: 50px;  
     padding-right: 40px; 
 }
-
 
 main {
     padding-top: 70px;
@@ -45,8 +43,7 @@ main {
     </div>
 
     <div class="container mt-5 bg-gray-2 rounded p-4">
-        <h2 class="display-4">Welcome to NetSci2025</h2>
-        <p class="lead">NetSci2025 is the leading conference on Network Science dedicated to shaping the future. NetSci2025 is a premier conference that brings together researchers, professionals, and enthusiasts in the field of Network Science. It provides a platform to exchange ideas, share latest research findings, and explore the potential of network science in solving real-world challenges. Join us for insightful sessions, workshops, and networking opportunities. This is a great space to delve deeper into the world of network science and its impact on various domains such as technology, social sciences, and more.</p>
+        {{ content }}
     </div>
 
     <div class="container-fluid mt-5 d-flex justify-content-center">
