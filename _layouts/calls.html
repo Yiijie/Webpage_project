@@ -22,81 +22,30 @@ layout: default
     main {
         padding-top: 70px;
     }
-
 </style>
 
 <main class="my-4">
     <div class="container">
-        <h1 class="display-5">Call for Abstracts</h1>
-        <p class="lead">
-            <strong>Deadline:</strong> TBA
-            <br>
-            <strong>Author Notification:</strong> TBD
-        </p>
+        <h1 class="display-5">{{ page.title }}</h1>
         <div class="row">
             <div class="col-md-12">
-                <h2>NetSci</h2>
-                <p>
-                    NetSci is the flagship conference on Complex Networks promoted by the Network Science Society. It brings under one umbrella a wide variety of leading researchers, practitioners, and stakeholders with a direct interest in <strong>Network Science</strong>, from Physics to Computer Science, Biology, Social Sciences, Economics, and Technological and Communication Networks, among others.
-                </p>
-                <p>
-                    We are looking forward to seeing the best of your new insights into network science at the International School and Conference on Network Science 2025, in TBD, to be held from <strong>TBA, 2025</strong>. The conference focuses on interdisciplinary research on all aspects of network science and modeling, ranging from foundational works to applications in various disciplines.
-                </p>
-            </div>
-            <div class="col-md-12">
-                <h2>Broad Topics</h2>
-                <ul>
-                    <li>Ecological and Biological networks</li>
-                    <li>Epidemics</li>
-                    <li>Network medicine</li>
-                    <li>Network neuroscience</li>
-                    <li>Diffusion, spreading, and transport</li>
-                    <li>Mobility and urban networks</li>
-                    <li>Computational Social Sciences</li>
-                    <li>Social groups and networks</li>
-                    <li>Social political and technical systems</li>
-                    <li>Economics and Financial networks</li>
-                    <li>Network Science and Education</li>
-                    <li>Synchronization and control</li>
-                    <li>Temporal networks</li>
-                    <li>Multilayer/multiplex networks</li>
-                    <li>Higher-order interactions</li>
-                    <li>Data analysis and Network measures</li>
-                    <li>Statistical inference</li>
-                    <li>Network Geometry</li>
-                    <li>Network models</li>
-                    <li>Percolation, resilience, phase transitions</li>
-                </ul>
+                {% capture calls_text %}
+                {{ site.data.calls.content | markdownify }}
+                {% endcapture %}
+                {{ calls_text }}
             </div>
         </div>
         <hr class="my-4">
-        <h2>How to Apply</h2>
-        <p>
-            We invite you to submit a <strong>one-page abstract</strong> including one (mandatory) descriptive figure and caption by the <strong>TBA</strong>, via our submission system.
-        </p>
-        <p>
-            We accept contributed talks (regular talks in parallel sessions and lightning, shorter talks in plenary sessions) and posters.
-        </p>
-        <p>
-            Please indicate your preference for one of the following categories to present your research:
-        </p>
-        <ul>
-            <li>Poster submission</li>
-            <li>Regular talk</li>
-            <li>Lightning talk</li>
-        </ul>
-        <p>
-            If you have any questions, please do not hesitate to contact us: <a href="mailto:netsci2025@gmail.com">netsci2025@gmail.com</a>
-        </p>
         <div class="text-center mt-4">
-                {% assign buttons = site.data.calls.buttons %}
-                {% for button in buttons %}
-                <a href="{{ button.url }}" class="btn btn-primary btn-lg">{{ button.text }}</a>
-                {% endfor %}
+            {% assign buttons = site.data.calls.buttons %}
+            {% for button in buttons %}
+            <a href="{{ button.url }}" class="btn btn-primary btn-lg">{{ button.text }}</a>
+            {% endfor %}
         </div>
     </div>
 </main>
 
 {% include footer.html %}
+
 
 
