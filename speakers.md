@@ -1,7 +1,7 @@
 ---
 layout: speakers
 title: Speakers
-description: Map of conference locations
+description: Keynote speakers
 navorder: 4
 ---
 
