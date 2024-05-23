@@ -1,11 +1,11 @@
 ---
 layout: calls
-title: Call for Abstracts
+title: Calls
 description: Schedule of talks and activities
 navorder: 2
 ---
 
-
+# Call for Abstracts
 
 **Deadline:** TBA  
 **Author Notification:** TBD
