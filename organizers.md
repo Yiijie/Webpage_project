@@ -1,23 +1,31 @@
 ---
-layout: organizers
+layout: default
 title: Organizers
 description: List of organizers and participants
 navorder: 4
 ---
 
 ### Scientific committee
-Leto Peel
-Michael Schaub
-Luis Rocha
-Clara Stegehuis
-Daniele Marinazzo
-Natasa Djurdjevac Conrad
-Christian Bick
-Alexandre Bovet
-Caterina De Bacco
-Adriana Iamnitchi
-Timoteo Carletti
-Aida Abiad
-Fariba Karimi
-Ivan Kryven
+<div class="row">
+  <div class="col-md-4">
+    Leto Peel<br>
+    Michael Schaub<br>
+    Luis Rocha<br>
+    Clara Stegehuis<br>
+    Daniele Marinazzo<br>
+  </div>
+  <div class="col-md-4">
+    Natasa Djurdjevac Conrad<br>
+    Christian Bick<br>
+    Alexandre Bovet<br>
+    Caterina De Bacco<br>
+    Adriana Iamnitchi<br>
+  </div>
+  <div class="col-md-4">
+    Timoteo Carletti<br>
+    Aida Abiad<br>
+    Fariba Karimi<br>
+    Ivan Kryven<br>
+  </div>
+</div>
 
