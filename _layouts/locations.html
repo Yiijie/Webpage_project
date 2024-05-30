@@ -6,6 +6,7 @@ layout: default
 {% include header.html %}
 
 <style>
+
 .navbar {
     position: fixed;
     top: 0;
@@ -19,58 +20,21 @@ layout: default
     padding-right: 40px; 
 }
 
+
 main {
     padding-top: 70px;
-}
-
-#map {
-    height: 80vh;
-    width: 100%;
 }
 </style>
 
 <main class="my-4">
     <div class="container">
-        <h1 class="display-5">{{ page.title }}</h1>
-        <p>Congress center (MECC): Forum 100, 6229 GV Maastricht</p>
-        <p>School of business and economics maastricht (SBE): Tongersestraat 53, 6211 LM Maastricht</p>
+        <h1 class="display-5">{{ title }}</h1>
+        {{ content }}
+        {% if site.data.locations %}
+        <hr class="my-4">
         <div id="map"></div>
+        {% endif %}
     </div>
 </main>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
-<script>
-function initMap() {
-    var center = {lat: 50.8484, lng: 5.6888};
-    var zoom = 13;
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: center,
-        zoom: zoom
-    });
-
-    var markers = [
-        {title: 'Forum 100, 6229 GV Maastricht', text: 'MECC', latlng: {lat: 50.8387222, lng: 5.7121196}},
-        {title: 'Tongersestraat 53, 6211 LM Maastricht', text: 'School of business and economics maastricht', latlng: {lat: 50.8449465, lng: 5.6848629}}
-    ];
-
-    markers.forEach(function(markerInfo) {
-        var marker = new google.maps.Marker({
-            position: markerInfo.latlng,
-            map: map,
-            title: markerInfo.title
-        });
-
-        var infowindow = new google.maps.InfoWindow({
-            content: '<h5>' + markerInfo.text + '</h5><p>' + markerInfo.title + '</p>'
-        });
-
-        marker.addListener('click', function() {
-            infowindow.open(map, marker);
-        });
-    });
-}
-
-google.maps.event.addDomListener(window, 'load', initMap);
-</script>
 
 {% include footer.html %}
