@@ -23,23 +23,9 @@ main {
     padding-top: 70px;
 }
 
-.video-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 80vh; /* Adjust height as needed */
-}
-
-.video-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    max-width: 1200px; /* Max width for larger screens */
-    max-height: 80vh; /* Ensure it doesn't exceed 80% of viewport height */
-}
-
 .row {
     display: flex;
+    justify-content: space-between;
 }
 
 .col-md-4 {
@@ -49,30 +35,38 @@ main {
 </style>
 
 <main class="my-4">
-    <div class="container-fluid hero-image" style="background-image: url('{{ site.baseurl }}/assets/images/maastricht.jpg'); height: 800px; background-size: cover;">
-        <div class="hero-text">
-            {% if page.title == "Home" %}
-            <h1 class="display-3 text-uppercase font-weight-bold">NetSci2025 Conference on Network Science</h1>
-            {% else %}
-            <h1 class="display-3 text-uppercase font-weight-bold">{{ page.title }}</h1>
-            {% endif %}
-            <p class="lead">TBA, TBD</p>
-            <div>
-                {% assign buttons = site.data.index.buttons %}
-                {% for button in buttons %}
-                <a href="{{ button.url }}" class="btn btn-primary btn-lg">{{ button.text }}</a>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-5 bg-gray-2 rounded p-4">
+    <div class="container">
+        <h1 class="display-5">{{ page.title }}</h1>
         {{ content }}
-    </div>
-
-    <div class="video-wrapper mt-5">
-        <iframe src="https://player.vimeo.com/video/610799265?h=ca516dece4&app_id=122963" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        {% if site.data.contributors %}
+        <hr class="my-4">
+        {% assign groups = site.data.contributors.groups %}
+        {% for group in groups %}
+        {% if group.title %}
+        <h5 class="fw-normal">{{ group.title }}</h5>
+        {% endif %}
+        {% if group.columns %}
+        {% assign div = ' id="roster"' %}
+        {% else %}
+        {% assign div = '' %}
+        {% endif %}
+        <div {{ div }}>
+            <ul class="list-unstyled">
+                {% assign members = group.members | sort_natural: 'surname' %}
+                {% for member in members %}
+                {% assign full = member.name | append: ' ' | append: member.surname %}
+                {% if member.email %}
+                <li class="fw-light"><a href="mailto:{{ member.email }}">{{ full }}</a></li>
+                {% else %}
+                <li class="fw-light">{{ full }}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+        {% endif %}
     </div>
 </main>
 
 {% include footer.html %}
+
