@@ -3,10 +3,10 @@ zoom: 13
 
 markers:
   - title: Forum 100, 6229 GV Maastricht
-    text: It is easily customizable with title and text
+    text: MECC
     latlng: 50.8387222, 5.7121196
   - title: Tongersestraat 53, 6211 LM Maastricht
-    text: It is easily customizable with title and text
+    text: School of business and economics maastricht
     latlng: 50.8449465, 5.6848629
 
 areas:
