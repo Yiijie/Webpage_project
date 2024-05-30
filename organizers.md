@@ -5,4 +5,4 @@ description: List of organizers and participants
 navorder: 4
 ---
 
-## Scientific committee
+### Scientific committee
