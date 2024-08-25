@@ -40,35 +40,44 @@ layout: default
         {% else %}
         <h1 class="display-5">{{ page.title }}</h1>
         {% endif %}
+        <div class="row">
+            <div class="mt-12">
+                {% assign buttons = site.data.calls.buttons %}
+                {% for button in buttons %}
+                <a href="{{ button.url }}" class="btn btn-primary btn-lg">{{ button.text }}</a>
+                {% endfor %}
+            </div>
+        </div>
 
-        <!-- Split the content into sections -->
-        {% assign content_parts = content | split: '<!-- COLUMN BREAK -->' %}
-        
-        <!-- First section: Call for abstracts (left column) -->
+        <!-- Main content and sidebar columns -->
         <div class="content-container">
+            <!-- Main content column -->
             <div class="main-content">
-                {{ content_parts[0] | markdownify }}
+                <!-- Manually add Call for abstracts content -->
+                {{ content | split: '<!-- START COLUMN -->' | first | markdownify }}
             </div>
 
-            <!-- Second section: Broad Topics (right column) -->
+            <!-- Sidebar column for Broad Topics -->
             <div class="sidebar">
                 <h2 class="h5">Broad Topics</h2>
-                {{ content_parts[1] | markdownify }}
+                <!-- Manually add Broad Topics content -->
+                {{ content | split: '<!-- END COLUMN -->' | last | markdownify }}
             </div>
         </div>
 
         <hr class="my-4">
 
-        <!-- Remaining content after Broad Topics (single column) -->
+        <!-- Restore to single column for remaining content -->
         <div class="container mt-4">
-            {% if content_parts.size > 2 %}
-                {{ content_parts[2] | markdownify }}
-            {% endif %}
+            <!-- Manually add content after Broad Topics -->
+            {% assign remaining_content = content | split: '<!-- END COLUMN -->' %}
+            {{ remaining_content[1] | markdownify }}
         </div>
     </div>
 </main>
 
 {% include footer.html %} 
+
 
 
 
