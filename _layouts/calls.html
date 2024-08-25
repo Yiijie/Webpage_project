@@ -61,17 +61,10 @@ layout: default
             </div>
         </div>
 
-        <hr class="my-4">
-
-        <!-- Render the remaining content after Broad Topics in single column -->
-        <div class="container mt-4">
-            {% if broad_topics.size > 1 %}
-                {{ broad_topics[1..-1] | join: '## ' | markdownify }} <!-- Render rest of the content after "Broad Topics" -->
-            {% endif %}
-        </div>
-
+        <!-- Do not render anything else after the sidebar "Broad Topics" content -->
     </div>
 </main>
+
 
 
 
