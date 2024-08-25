@@ -40,6 +40,8 @@ layout: default
         {% else %}
         <h1 class="display-5">{{ page.title }}</h1>
         {% endif %}
+        
+        <!-- Buttons -->
         <div class="row">
             <div class="mt-12">
                 {% assign buttons = site.data.calls.buttons %}
@@ -49,40 +51,32 @@ layout: default
             </div>
         </div>
 
-        <!-- Split content at "Broad Topics" -->
-        {% assign content_parts = content | split: '## Broad Topics' %}
-        {% assign call_for_abstracts = content_parts[0] %}
-        {% assign broad_topics_and_beyond = content_parts[1] %}
-
-        <!-- Split the remaining content at "How to Apply" -->
-        {% assign broad_topics_parts = broad_topics_and_beyond | split: '## How to Apply' %}
-        {% assign broad_topics = broad_topics_parts[0] %}
-        {% assign remaining_content = broad_topics_parts[1] %}
-
-        <!-- Main content and sidebar columns for Call for abstracts and Broad Topics -->
+        <!-- Two-column layout for Call for abstracts and Broad Topics -->
         <div class="content-container">
-            <!-- Main content column for Call for abstracts -->
             <div class="main-content">
-                {{ call_for_abstracts | markdownify }}
+                <!-- "Call for abstracts" section -->
+                {{ content | split: '## Broad Topics' | first | markdownify }}
             </div>
 
-            <!-- Sidebar column for Broad Topics -->
             <div class="sidebar">
+                <!-- "Broad Topics" section -->
                 <h2 class="h5">Broad Topics</h2>
-                {{ broad_topics | markdownify }}
+                {{ content | split: '## Broad Topics' | last | split: '## How to Apply' | first | markdownify }}
             </div>
         </div>
 
         <hr class="my-4">
 
-        <!-- Display remaining content in a single column -->
+        <!-- Full-width layout for remaining sections -->
         <div class="row">
             <div class="col-md-12">
-                {{ remaining_content | markdownify }}
+                <!-- Remaining content starting from "How to Apply" -->
+                {{ content | split: '## How to Apply' | last | markdownify }}
             </div>
         </div>
     </div>
 </main>
+
 
 
 
