@@ -42,7 +42,7 @@ layout: default
         {% endif %}
 
         <!-- Split the content into sections -->
-        {% assign content_parts = content | split: '## Broad Topics' %}
+        {% assign content_parts = content | split: '<!-- COLUMN BREAK -->' %}
         
         <!-- First section: Call for abstracts (left column) -->
         <div class="content-container">
@@ -53,8 +53,7 @@ layout: default
             <!-- Second section: Broad Topics (right column) -->
             <div class="sidebar">
                 <h2 class="h5">Broad Topics</h2>
-                {% assign broad_topics_section = content_parts[1] | split: '## ' %}
-                {{ broad_topics_section[0] | markdownify }}
+                {{ content_parts[1] | markdownify }}
             </div>
         </div>
 
@@ -62,8 +61,8 @@ layout: default
 
         <!-- Remaining content after Broad Topics (single column) -->
         <div class="container mt-4">
-            {% if broad_topics_section.size > 1 %}
-                {{ broad_topics_section[1..-1] | join: '## ' | markdownify }}
+            {% if content_parts.size > 2 %}
+                {{ content_parts[2] | markdownify }}
             {% endif %}
         </div>
     </div>
