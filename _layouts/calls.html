@@ -40,40 +40,36 @@ layout: default
         {% else %}
         <h1 class="display-5">{{ page.title }}</h1>
         {% endif %}
-        
-        <!-- Buttons -->
-        <div class="row">
-            <div class="mt-12">
-                {% assign buttons = site.data.calls.buttons %}
-                {% for button in buttons %}
-                <a href="{{ button.url }}" class="btn btn-primary btn-lg">{{ button.text }}</a>
-                {% endfor %}
-            </div>
-        </div>
 
-        <!-- Two-column layout for Call for abstracts and Broad Topics -->
+        <!-- Start of the content split logic -->
         <div class="content-container">
+            <!-- Main content column -->
             <div class="main-content">
-                <!-- "Call for abstracts" section -->
-                {{ content | split: '## Broad Topics' | first | markdownify }}
+                <!-- Extract content before "Broad Topics" -->
+                {% assign content_split = content | split: '## Broad Topics' %}
+                {{ content_split[0] | markdownify }}
             </div>
 
+            <!-- Sidebar for Broad Topics -->
             <div class="sidebar">
-                <!-- "Broad Topics" section -->
-                <h2 class="h5">Broad Topics</h2>
-                {{ content | split: '## Broad Topics' | last | split: '## How to Apply' | first | markdownify }}
+                {% if content_split.size > 1 %}
+                    <h2 class="h5">Broad Topics</h2>
+                    <!-- Render only the "Broad Topics" content -->
+                    {% assign broad_topics_split = content_split[1] | split: '## ' %}
+                    {{ broad_topics_split[0] | markdownify }}
+                {% endif %}
             </div>
         </div>
 
         <hr class="my-4">
 
-        <!-- Full-width layout for remaining sections -->
-        <div class="row">
-            <div class="col-md-12">
-                <!-- Remaining content starting from "How to Apply" -->
-                {{ content | split: '## How to Apply' | last | markdownify }}
-            </div>
+        <!-- Render the remaining content after Broad Topics in single column -->
+        <div class="container mt-4">
+            {% if broad_topics_split.size > 1 %}
+                {{ broad_topics_split[1..-1] | join: '## ' | markdownify }}
+            {% endif %}
         </div>
+
     </div>
 </main>
 
