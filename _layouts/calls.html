@@ -49,34 +49,37 @@ layout: default
             </div>
         </div>
 
-        <!-- Splitting content into two parts -->
-        {% assign content_parts = content | split: '## Broad Topics' %}
+        <!-- Splitting content into sections -->
+        {% assign sections = content | split: '## ' %}
+        {% assign call_for_abstracts = sections[0] %}
+        {% assign broad_topics = sections[1] %}
+        {% assign remaining_content = sections[2..-1] | join: '## ' %}
 
-        <!-- Main content and sidebar columns -->
+        <!-- Main content and sidebar columns for Call for abstracts and Broad Topics -->
         <div class="content-container">
-            <!-- Main content column -->
+            <!-- Main content column for Call for abstracts -->
             <div class="main-content">
-                {{ content_parts[0] | markdownify }}
+                {{ call_for_abstracts | markdownify }}
             </div>
 
             <!-- Sidebar column for Broad Topics -->
             <div class="sidebar">
                 <h2 class="h5">Broad Topics</h2>
-                {% assign broad_topics_content = content_parts[1] | split: '## ' %}
-                {{ broad_topics_content[0] | markdownify }}
+                {{ broad_topics | markdownify }}
             </div>
         </div>
 
         <hr class="my-4">
 
-        <!-- Display remaining content after Broad Topics -->
+        <!-- Display remaining content in single column -->
         <div class="row">
             <div class="col-md-12">
-                {{ broad_topics_content[1..-1] | join: '## ' | markdownify }}
+                {{ remaining_content | markdownify }}
             </div>
         </div>
     </div>
 </main>
+
 
 
 
