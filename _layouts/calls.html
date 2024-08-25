@@ -47,19 +47,17 @@ layout: default
             <div class="main-content">
                 <!-- Extract content before "Broad Topics" -->
                 {% assign content_parts = content | split: '## Broad Topics' %}
-                {{ content_parts[0] | markdownify }} <!-- Render content before "Broad Topics" -->
+                {{ content_parts[0] | markdownify }} <!-- Only render content before "Broad Topics" -->
             </div>
 
             <!-- Sidebar for Broad Topics -->
             <div class="sidebar">
                 {% if content_parts.size > 1 %}
                     <h2 class="h5">Broad Topics</h2>
-                    {{ content_parts[1] | markdownify }} <!-- Render only "Broad Topics" in sidebar -->
+                    {{ content_parts[1] | markdownify }} <!-- Only render "Broad Topics" in the sidebar -->
                 {% endif %}
             </div>
         </div>
-
-        <!-- No further content rendering to prevent duplication -->
     </div>
 </main>
 
