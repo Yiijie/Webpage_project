@@ -49,8 +49,10 @@ layout: default
             </div>
         </div>
 
-        <!-- Main content and sidebar columns -->
+        <!-- Splitting content into two parts -->
         {% assign content_parts = content | split: '## Broad Topics' %}
+
+        <!-- Main content and sidebar columns -->
         <div class="content-container">
             <!-- Main content column -->
             <div class="main-content">
@@ -75,6 +77,7 @@ layout: default
         </div>
     </div>
 </main>
+
 
 
 {% include footer.html %} 
