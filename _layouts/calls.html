@@ -49,12 +49,12 @@ layout: default
             </div>
         </div>
 
-        <!-- Manually target the content before and after "Broad Topics" -->
+        <!-- Split content at "Broad Topics" -->
         {% assign content_parts = content | split: '## Broad Topics' %}
         {% assign call_for_abstracts = content_parts[0] %}
         {% assign broad_topics_and_beyond = content_parts[1] %}
 
-        <!-- Further split to isolate the Broad Topics section -->
+        <!-- Split the remaining content at "How to Apply" -->
         {% assign broad_topics_parts = broad_topics_and_beyond | split: '## How to Apply' %}
         {% assign broad_topics = broad_topics_parts[0] %}
         {% assign remaining_content = broad_topics_parts[1] %}
@@ -78,12 +78,12 @@ layout: default
         <!-- Display remaining content in a single column -->
         <div class="row">
             <div class="col-md-12">
-                <h2>How to Apply</h2>
                 {{ remaining_content | markdownify }}
             </div>
         </div>
     </div>
 </main>
+
 
 
 
