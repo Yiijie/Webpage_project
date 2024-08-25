@@ -6,47 +6,70 @@ layout: default
 {% include header.html %}
 
 <style>
-    .navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        background-color: #f8f9fa;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        padding-left: 50px;
-        padding-right: 40px;
-    }
-
     main {
         padding-top: 70px;
+    }
+    /* Flexbox layout to split content into two columns */
+    .content-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .main-content {
+        flex: 0 0 65%; /* Left side content takes up 65% */
+        padding-right: 20px;
+    }
+    .sidebar {
+        flex: 0 0 30%; /* Right side content takes up 30% */
+        background-color: #f8f9fa; /* Optional: Add a background color */
+        padding-left: 20px;
+    }
+    @media (max-width: 768px) {
+        .main-content, .sidebar {
+            flex: 0 0 100%; /* On small screens, both columns take up 100% width */
+            padding-right: 0;
+            padding-left: 0;
+        }
     }
 </style>
 
 <main class="my-4">
     <div class="container">
         {% if page.title == "Calls" %}
-        <h1 class="display-5">Call for Abstracts</h1>
+        <h1 class="display-5">Calls and submission guidelines</h1>
         {% else %}
         <h1 class="display-5">{{ page.title }}</h1>
         {% endif %}
-        <div class="row">
-            <div class="col-md-12">
-                {{ content }}
+
+        <!-- Split the content into sections -->
+        {% assign content_parts = content | split: '## Broad Topics' %}
+        
+        <!-- First section: Call for abstracts (left column) -->
+        <div class="content-container">
+            <div class="main-content">
+                {{ content_parts[0] | markdownify }}
+            </div>
+
+            <!-- Second section: Broad Topics (right column) -->
+            <div class="sidebar">
+                <h2 class="h5">Broad Topics</h2>
+                {% assign broad_topics_section = content_parts[1] | split: '## ' %}
+                {{ broad_topics_section[0] | markdownify }}
             </div>
         </div>
+
         <hr class="my-4">
-        <div class="text-center mt-4">
-            {% assign buttons = site.data.calls.buttons %}
-            {% for button in buttons %}
-            <a href="{{ button.url }}" class="btn btn-primary btn-lg">{{ button.text }}</a>
-            {% endfor %}
+
+        <!-- Remaining content after Broad Topics (single column) -->
+        <div class="container mt-4">
+            {% if broad_topics_section.size > 1 %}
+                {{ broad_topics_section[1..-1] | join: '## ' | markdownify }}
+            {% endif %}
         </div>
     </div>
 </main>
 
-{% include footer.html %}
+<!-- {% include footer.html %} -->
 
 
 
