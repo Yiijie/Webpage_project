@@ -1,4 +1,4 @@
-buttons:
-  - text: Apply here
-    url: https://github.com/piazzai/jekyll-nagymaros
-    disabled: false
+# buttons:
+#   - text: Apply here
+#     url: https://TBD
+#     disabled: true
