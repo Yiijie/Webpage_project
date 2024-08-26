@@ -60,9 +60,12 @@ layout: default
 
             <!-- Sidebar column for Broad Topics -->
             <div class="sidebar">
-                <h2 class="h5">Broad Topics</h2>
-                {{ content | split: 'How to Apply' | first | split: 'Broad Topics' | last | markdownify }}
+            <h2 class="h5">Broad Topics</h2>
+            {% assign sidebar_content = content | split: 'How to Apply' | first | split: 'Broad Topics' | last %}
+            {% assign sidebar_content_cleaned = sidebar_content | remove: '</h2>' %}
+            {{ sidebar_content_cleaned | markdownify }}
             </div>
+
         </div>
 
         <hr class="my-4">
