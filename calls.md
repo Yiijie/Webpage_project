@@ -52,7 +52,7 @@ During the submission process, please indicate your preferred presentation forma
 We look forward to receiving your submissions! 
 
 **Abstract Requirements**:
-One-page abstracts should include text, one figure with caption and [selected] references. Each submission should be submitted in Adobe's Portable Document Format (PDF) and formatted using the provided abstract template. You can see a sample abstract <a href="https://github.com/Yiijie/Webpage_project/blob/main/_data/NetSci2025_sample_abstract.pdf" download>here</a>.
+One-page abstracts should include text, one figure with caption and [selected] references. Each submission should be submitted in Adobe's Portable Document Format (PDF) and formatted using the provided abstract template. You can see a sample abstract <a href="[NetSci2025_sample_abstract.pdf](https://github.com/user-attachments/files/16743643/NetSci2025_sample_abstract.pdf)" download>here</a>.
 Accepted abstracts require in-person presentation by one author, who can present a maximum of one accepted abstract, and must register by the early-bird registration deadline.
 
 
