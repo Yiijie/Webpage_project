@@ -71,13 +71,12 @@ layout: default
         <hr class="my-4">
 
         <!-- Single column layout for remaining content -->
-<div class="row">
-    <div class="col-md-12">
-        <h2>How to Apply</h2>
-        {{ content | split: 'How to Apply' | last | remove: '</h2>' | markdownify }}
-
-    </div>
-</div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>How to Apply</h2>
+                {{ content | split: 'How to Apply' | last | replace: '</h2>', '' | markdownify }}
+            </div>
+        </div>
     </div>
 </main>
 
