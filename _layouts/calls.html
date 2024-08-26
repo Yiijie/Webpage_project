@@ -74,7 +74,7 @@ layout: default
         <div class="row">
             <div class="col-md-12">
             <h2>How to Apply</h2>
-            {{ apply_content | remove: '</h2>' }}
+            {{ apply_content | remove: '</h2>' | markdownify }}
             </div>
         </div>
     </div>
