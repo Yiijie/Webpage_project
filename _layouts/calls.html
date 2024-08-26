@@ -45,7 +45,7 @@ layout: default
             <div class="mt-12">
                 {% assign buttons = site.data.calls.buttons %}
                 {% for button in buttons %}
-                <a href="{{ button.url }}" class="btn btn-primary btn-lg">{{ button.text }}</a>
+                <a href="{{ button.url }}" class="btn btn-primary btn-lg" {% if button.download %}download{% endif %}>{{ button.text }}</a>
                 {% endfor %}
             </div>
         </div>
@@ -75,22 +75,20 @@ layout: default
         {% assign call_for_satellites_and_dates = call_for_satellites_content[1] %}
 
         <!-- Replace 'here' with the download button -->
-        {% assign how_to_apply_with_link = how_to_apply_content | replace: 'here', '<a href="' | append: site.data.calls.sample_abstract.url | append: '" download>' | append: 'here</a>' %}
+        <div>
+            {% assign sample_buttons = site.data.calls.sample_abstract %}
+            <p>You can see a sample abstract 
+            <a href="{{ sample_buttons.url }}" {% if sample_buttons.download %}download{% endif %}>{{ sample_buttons.text }}</a>.
+            </p>
+        </div>
         
         <!-- Split Call for Satellites and Important Dates -->
         {% assign satellites_and_dates_split = call_for_satellites_and_dates | split: 'Important dates' %}
         {% assign call_for_satellites_only = satellites_and_dates_split[0] | replace: '</h2>', '' %}
         {% assign important_dates_only = satellites_and_dates_split[1] | replace: '</h2>', '' %}
 
-        <!-- How to Apply Section -->
-        <div class="row">
-            <div class="col-md-12">
-                <h2>How to Apply</h2>
-                {{ how_to_apply_with_link | markdownify }}
-            </div>
-        </div>
-
         <hr class="my-4">
+
         <!-- Call for Satellites Section -->
         <div class="row">
             <div class="col-md-12">
@@ -100,6 +98,7 @@ layout: default
         </div>
 
         <hr class="my-4">
+
         <!-- Important Dates Section -->
         <div class="row">
             <div class="col-md-12">
