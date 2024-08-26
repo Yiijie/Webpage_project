@@ -39,6 +39,17 @@ layout: default
         margin-bottom: 5px; /* 增加列表项之间的间距 */
     }
 
+    .bullet-list li:last-child {
+    display: inline-block;
+    position: relative;
+    }
+
+    .bullet-list li:last-child::after {
+    content: ''; /* 确保箭头符号不显示 */
+    display: none;
+    }
+
+
     /* 调整横线的间距 */
     hr.my-4 {
         margin-top: 20px;
