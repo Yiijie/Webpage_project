@@ -71,7 +71,7 @@ layout: default
         <!-- Single column layout for remaining content -->
         {% assign remaining_content = content | split: 'How to Apply' | last %}
         {% assign call_for_satellites_content = remaining_content | split: 'Call for satellites' %}
-        {% assign how_to_apply_content = call_for_satellites_content[0] | replace: '</h2>', '' | replace: 'here', '<a href="' | append: site.data.calls.sample_abstract.url | append: '" download>here</a>' %}
+        {% assign how_to_apply_content = call_for_satellites_content[0] | replace: 'here', '<a href="' | append: site.data.calls.sample_abstract.url | append: '" download="sample.pdf">here</a>' %}
         {% assign call_for_satellites_and_dates = call_for_satellites_content[1] %}
         
         <!-- Split Call for Satellites and Important Dates -->
@@ -87,7 +87,6 @@ layout: default
             </div>
         </div>
 
-        <hr class="my-4">
         <!-- Call for Satellites Section -->
         <div class="row">
             <div class="col-md-12">
@@ -96,7 +95,6 @@ layout: default
             </div>
         </div>
 
-        <hr class="my-4">
         <!-- Important Dates Section -->
         <div class="row">
             <div class="col-md-12">
