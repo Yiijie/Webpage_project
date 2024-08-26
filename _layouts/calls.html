@@ -59,7 +59,7 @@ layout: default
 
             <!-- Sidebar column for Broad Topics -->
             <div class="sidebar">
-                <h2 class="h5">Broad Topics</h2>
+                <h2 class="h5">Broad Topics
                 {% assign broad_topics_content = content | split: 'How to Apply' | first | split: 'Broad Topics' | last %}
                 {{ broad_topics_content | markdownify }}
             </div>
