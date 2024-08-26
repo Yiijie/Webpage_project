@@ -45,6 +45,11 @@ layout: default
         margin-bottom: 20px;
     }
 
+    /* 强制隐藏自动生成的横线 */
+    .main-content hr:first-of-type {
+        display: none; /* 隐藏第一个横线 */
+    }
+
     @media (max-width: 768px) {
         .main-content, .sidebar {
             flex: 0 0 100%; /* 小屏幕上，两列占100%宽度 */
@@ -58,7 +63,7 @@ layout: default
     <div class="container">
         <h1 class="display-5">{{ page.title }}</h1>
         <!-- 只保留这一条横线 -->
-        <hr class="my-4"> 
+        <hr class="my-4">
 
         <!-- Main content and sidebar columns -->
         <div class="content-container">
@@ -79,7 +84,7 @@ layout: default
                 <h2 class="h5">Topics</h2>
                 <ul class="bullet-list"> <!-- 使用无序列表样式 -->
                 {% assign topics_content = content | split: 'Topics' | last | split: 'Call for satellites' | first %}
-                {{ topics_content | remove: '</h2>' | remove: '–>' |markdownify }} <!-- 确保没有错误的 </h2> -->
+                {{ topics_content | remove: '</h2>' | remove: '–>' | markdownify }} <!-- 确保没有错误的 </h2> -->
                 </ul>
             </div>
         </div>
