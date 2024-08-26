@@ -3,8 +3,8 @@
 #     url: https://TBD
 #     disabled: true
 
-buttons:
-  - text: Download Sample Abstract
-    url: _data/NetSci2025_sample_abstract.pdf
-    download: true
+sample_abstract:
+  text: here
+  url: _data/NetSci2025_sample_abstract.pdf
+  download: true
 
