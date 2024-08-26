@@ -42,7 +42,9 @@ layout: default
             <!-- Main content column for Call for abstracts and How to Apply -->
             <div class="main-content">
                 {{ content | split: 'How to Apply' | first | markdownify }}
-
+                
+                <hr class="my-4"> <!-- Add a horizontal line before How to Apply -->
+                
                 <h2>How to Apply</h2>
                 {% assign how_to_apply_content = content | split: 'How to Apply' | last | split: 'Topics' | first %}
                 {{ how_to_apply_content | markdownify }}
@@ -79,6 +81,7 @@ layout: default
         </div>
     </div>
 </main>
+
 
 
 
