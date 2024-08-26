@@ -55,6 +55,7 @@ layout: default
     <div class="container">
         <h1 class="display-5">{{ page.title }}</h1>
 
+        <hr class="my-4"> <!-- 添加长的横线 -->
         <!-- Main content and sidebar columns -->
         <div class="content-container">
             <!-- Main content column for Call for abstracts and How to Apply -->
@@ -62,7 +63,7 @@ layout: default
                 {% assign main_content_without_topics = content | split: 'Topics' | first %}
                 {{ main_content_without_topics | markdownify }}
 
-                <hr class="my-4"> <!-- 添加长的横线 -->
+                
                 
                 <h2>How to Apply</h2>
                 {% assign how_to_apply_content = content | split: 'How to Apply' | last | split: 'Call for satellites' | first %}
