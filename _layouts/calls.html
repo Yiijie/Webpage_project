@@ -36,14 +36,13 @@ layout: default
 <main class="my-4">
     <div class="container">
         <h1 class="display-5">{{ page.title }}</h1>
-        <hr class="my-4"> <!-- 将横线移动到这里，紧跟着标题 -->
-
+        
         <!-- Main content and sidebar columns -->
         <div class="content-container">
             <!-- Main content column for Call for abstracts and How to Apply -->
             <div class="main-content">
-                {% assign main_content_without_topics = content | split: 'Topics' | first %}
-                {{ main_content_without_topics | markdownify }}
+                <!-- 只保留一条横线 -->
+                {{ content | split: 'Topics' | first | markdownify }}
 
                 <hr class="my-4"> <!-- Add a horizontal line before How to Apply -->
                 
@@ -56,13 +55,8 @@ layout: default
             <div class="sidebar">
                 <h2 class="h5">Topics</h2>
                 <ul>
-                    {% assign topics_content = content | split: 'Topics' | last | split: 'Call for satellites' | first %}
-                    <!-- 将列表格式转换为无序列表并移除序号 -->
-                    {% for topic in topics_content | strip_html | split: '\n' %}
-                        {% if topic != "" %}
-                            <li>{{ topic | strip_newlines }}</li>
-                        {% endif %}
-                    {% endfor %}
+                    <!-- 使用原始无序列表呈现 Topics -->
+                    {{ content | split: 'Topics' | last | split: 'How to Apply' | first | markdownify }}
                 </ul>
             </div>
         </div>
@@ -90,6 +84,7 @@ layout: default
         </div>
     </div>
 </main>
+
 
 
 
