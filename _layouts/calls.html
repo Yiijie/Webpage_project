@@ -75,6 +75,11 @@ layout: default
         {% assign call_for_satellites_content = remaining_content | split: 'Call for satellites' %}
         {% assign how_to_apply_content = call_for_satellites_content[0] | replace: '</h2>', '' %}
         {% assign call_for_satellites_and_dates = call_for_satellites_content[1] %}
+        
+        <!-- Split Call for Satellites and Important Dates -->
+        {% assign satellites_and_dates_split = call_for_satellites_and_dates | split: 'Important dates' %}
+        {% assign call_for_satellites_only = satellites_and_dates_split[0] %}
+        {% assign important_dates_only = satellites_and_dates_split[1] %}
 
         <!-- How to Apply Section -->
         <div class="row">
@@ -84,10 +89,20 @@ layout: default
             </div>
         </div>
 
-        <!-- Call for Satellites and Important Dates Section -->
+        <hr class="my-4">
+        <!-- Call for Satellites Section -->
         <div class="row">
             <div class="col-md-12">
-                {{ call_for_satellites_and_dates | markdownify }}
+                <h2>Call for satellites</h2>
+                {{ call_for_satellites_only | markdownify }}
+            </div>
+        </div>
+
+        <!-- Important Dates Section -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Important dates</h2>
+                {{ important_dates_only | markdownify }}
             </div>
         </div>
     </div>
