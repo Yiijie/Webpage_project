@@ -84,7 +84,8 @@ layout: default
                 <h2 class="h5">Topics</h2>
                 <ul class="bullet-list"> <!-- 使用无序列表样式 -->
                 {% assign topics_content = content | split: 'Topics' | last | split: 'Call for satellites' | first %}
-                {{ topics_content | remove: '</h2>' | replace: '→', '' | markdownify }} 
+                {% assign topics_content_cleaned = topics_content | replace: '→', '' %}
+                {{ topics_content_cleaned | remove: '</h2>' | markdownify }} 
                 </ul>
             </div>
         </div>
