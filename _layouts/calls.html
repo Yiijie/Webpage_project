@@ -36,6 +36,7 @@ layout: default
 <main class="my-4">
     <div class="container">
         <h1 class="display-5">{{ page.title }}</h1>
+        <hr class="my-4">
 
         <!-- Main content and sidebar columns -->
         <div class="content-container">
@@ -49,24 +50,14 @@ layout: default
                 <h2 class="h5">Topics</h2>
                 <ul>
                 {% assign sidebar_content = content | split: 'How to Apply' | first | split: 'Topics' | last %}
-                {{ sidebar_content | markdownify }}
+                {% assign sidebar_content_cleaned = sidebar_content | remove: '</h2>' %}
+                {{ sidebar_content_cleaned | markdownify }}
                 </ul>
             </div>
         </div>
 
-        <!-- Single column layout for remaining content -->
-        {% assign remaining_content = content | split: 'How to Apply' | last %}
-        {% assign call_for_satellites_content = remaining_content | split: 'Call for satellites' %}
-        {% assign how_to_apply_content = call_for_satellites_content[0] | remove: '</h2>' %}
-        {% assign call_for_satellites_and_dates = call_for_satellites_content[1] %}
-        
-        <!-- Split Call for Satellites and Important Dates -->
-        {% assign satellites_and_dates_split = call_for_satellites_and_dates | split: 'Important dates' %}
-        {% assign call_for_satellites_only = satellites_and_dates_split[0] | remove: '</h2>' %}
-        {% assign important_dates_only = satellites_and_dates_split[1] | remove: '</h2>' %}
-
         <!-- How to Apply Section -->
-        <div class="row">
+        <div class="row mt-2">
             <div class="col-md-12">
                 <h2>How to Apply</h2>
                 {{ how_to_apply_content | markdownify }}
@@ -94,6 +85,7 @@ layout: default
 </main>
 
 <!-- {% include footer.html %} -->
+
 
 
 
