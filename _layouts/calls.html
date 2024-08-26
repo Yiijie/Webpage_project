@@ -24,6 +24,22 @@ layout: default
         background-color: #f8f9fa; /* 可选：添加背景色 */
         padding-left: 20px;
     }
+        /* 修正 Topics 列表使用圆点而非数字 */
+    .bullet-list {
+        list-style-type: disc; /* 使用圆点样式 */
+        padding-left: 20px; /* 增加左侧填充，使圆点对齐 */
+    }
+
+    .bullet-list li {
+        list-style-type: disc !important; /* 强制使用圆点样式 */
+        margin-bottom: 5px; /* 增加列表项之间的间距 */
+    }
+
+    /* 调整横线的间距 */
+    hr.my-4 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
     @media (max-width: 768px) {
         .main-content, .sidebar {
             flex: 0 0 100%; /* 小屏幕上，两列占100%宽度 */
@@ -31,12 +47,14 @@ layout: default
             padding-left: 0;
         }
     }
+
+    
 </style>
 
 <main class="my-4">
     <div class="container">
-        <!-- Only one horizontal line after the page title -->
         <h1 class="display-5">{{ page.title }}</h1>
+        <hr class="my-4" style="margin-top: 20px;"> <!-- 调整横线位置 -->
 
         <!-- Main content and sidebar columns -->
         <div class="content-container">
@@ -49,16 +67,15 @@ layout: default
                 
                 <h2>How to Apply</h2>
                 {% assign how_to_apply_content = content | split: 'How to Apply' | last | split: 'Call for satellites' | first %}
-                {{ how_to_apply_content | remove: '</h2>' | markdownify }}
+                {{ how_to_apply_content | markdownify }}
             </div>
 
             <!-- Sidebar column for Topics -->
             <div class="sidebar">
                 <h2 class="h5">Topics</h2>
-                <ul>
-                    {% assign topics_content = content | split: 'Topics' | last | split: 'How to Apply' | first %}
-                    {% assign topics_list = topics_content | markdownify %}
-                    {{ topics_list | remove: '1.' | remove: '2.' | remove: '3.' | remove: '4.' | remove: '5.' | remove: '6.' | remove: '7.' | remove: '8.' | remove: '9.' | remove: '10.' | remove: '11.' | remove: '12.' | remove: '13.' | remove: '14.' | remove: '15.' | remove: '16.' | remove: '17.' | remove: '18.' | remove: '19.' | remove: '20.' | remove: '21.' | remove: '22.' | remove: '23.' | remove: '24.' | remove: '25.' | remove: '26.' | remove: '27.' | remove: '28.' | remove: '29.' | remove: '30.' | remove: '31.' }}
+                <ul class="bullet-list"> <!-- Add a class for bullet list -->
+                {% assign topics_content = content | split: 'Topics' | last | split: 'Call for satellites' | first %}
+                {{ topics_content | markdownify }}
                 </ul>
             </div>
         </div>
@@ -70,7 +87,7 @@ layout: default
             <div class="col-md-12">
                 <h2>Call for satellites</h2>
                 {% assign call_for_satellites_content = content | split: 'Call for satellites' | last | split: 'Important dates' | first %}
-                {{ call_for_satellites_content | remove: '</h2>' | markdownify }}
+                {{ call_for_satellites_content | markdownify }}
             </div>
         </div>
 
@@ -81,7 +98,7 @@ layout: default
             <div class="col-md-12">
                 <h2>Important dates</h2>
                 {% assign important_dates_content = content | split: 'Important dates' | last %}
-                {{ important_dates_content | remove: '</h2>' | markdownify }}
+                {{ important_dates_content | markdownify }}
             </div>
         </div>
     </div>
