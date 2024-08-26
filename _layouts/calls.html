@@ -41,12 +41,11 @@ layout: default
         <h1 class="display-5">{{ page.title }}</h1>
         {% endif %}
 
-        
         <div class="row">
             <div class="mt-12">
                 {% assign buttons = site.data.calls.buttons %}
                 {% for button in buttons %}
-                <a href="{{ button.url }}" class="btn btn-primary btn-lg">{{ button.text }}</a>
+                <a href="{{ button.url }}" class="btn btn-primary btn-lg" {% if button.disabled %}disabled{% endif %}>{{ button.text }}</a>
                 {% endfor %}
             </div>
         </div>
@@ -65,7 +64,6 @@ layout: default
             {% assign sidebar_content_cleaned = sidebar_content | remove: '</h2>' %}
             {{ sidebar_content_cleaned | markdownify }}
             </div>
-
         </div>
 
         <hr class="my-4">
@@ -86,9 +84,10 @@ layout: default
             <div class="col-md-12">
                 <h2>How to Apply</h2>
                 {{ how_to_apply_content | markdownify }}
+                <p>You can see a sample abstract <a href="{{ site.data.calls.sample_abstract.url }}">{{ site.data.calls.sample_abstract.text }}</a>.</p>
             </div>
         </div>
-
+        
         <hr class="my-4">
         
         <!-- Call for Satellites Section -->
@@ -98,7 +97,7 @@ layout: default
                 {{ call_for_satellites_only | markdownify }}
             </div>
         </div>
-        
+
         <hr class="my-4">
         <!-- Important Dates Section -->
         <div class="row">
@@ -109,6 +108,7 @@ layout: default
         </div>
     </div>
 </main>
+
 
 
 
