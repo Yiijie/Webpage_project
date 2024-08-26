@@ -73,7 +73,7 @@ layout: default
                 <h2 class="h5">Topics</h2>
                 <ul class="bullet-list"> <!-- Add a class for bullet list -->
                 {% assign topics_content = content | split: 'Topics' | last | split: 'Call for satellites' | first %}
-                {% assign topics_content_cleaned = topics_content | remove: '→' %} <!-- 移除箭头符号 -->
+                {% assign topics_content_cleaned = topics_content | remove: '→' | remove: '&rarr;' | strip %} <!-- 移除所有箭头符号 -->
                 {{ topics_content_cleaned | markdownify }}
                 </ul>
             </div>
@@ -104,6 +104,7 @@ layout: default
 </main>
 
 <!-- {% include footer.html %} -->
+
 
 
 
