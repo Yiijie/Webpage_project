@@ -54,15 +54,17 @@ layout: default
         <div class="content-container">
             <!-- Main content column -->
             <div class="main-content">
-                {% assign call_for_abstracts = content | split: 'Broad Topics' | first %}
-                {{ call_for_abstracts | markdownify }}
+                {% assign parts = content | split: '## Broad Topics' %}
+                {{ parts[0] | markdownify }}
             </div>
 
             <!-- Sidebar column for Broad Topics -->
             <div class="sidebar">
                 <h2 class="h5">Broad Topics</h2>
-                {% assign broad_topics_content = content | split: 'How to Apply' | first | split: 'Broad Topics' | last %}
-                {{ broad_topics_content | markdownify }}
+                {% if parts.size > 1 %}
+                    {% assign more_parts = parts[1] | split: '## How to Apply' %}
+                    {{ more_parts[0] | markdownify }}
+                {% endif %}
             </div>
         </div>
 
@@ -71,12 +73,14 @@ layout: default
         <!-- Single column layout for remaining content -->
         <div class="row">
             <div class="col-md-12">
-                {% assign remaining_content = content | split: 'How to Apply' | last %}
-                {{ remaining_content | markdownify }}
+                {% if more_parts.size > 1 %}
+                    {{ more_parts[1] | markdownify }}
+                {% endif %}
             </div>
         </div>
     </div>
 </main>
+
 
 
 
