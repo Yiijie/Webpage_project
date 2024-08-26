@@ -39,14 +39,9 @@ layout: default
         margin-bottom: 5px; /* 增加列表项之间的间距 */
     }
 
-     .bullet-list li:last-child {
-    position: relative;
-}
-
-    .bullet-list li:last-child::after {
-    content: ''; /* 这样可以移除伪元素生成的符号 */
-    display: none;
-}
+    .bullet-list li:last-child {
+    visibility: hidden; /* 完全隐藏最后一项内容 */
+    }
 
 
 
