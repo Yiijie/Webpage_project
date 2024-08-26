@@ -2,3 +2,7 @@
 #   - text: Apply here
 #     url: https://TBD
 #     disabled: true
+
+sample_abstract:
+  text: here
+  url: /path/to/sample-abstract.pdf 
