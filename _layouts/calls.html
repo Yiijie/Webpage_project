@@ -54,12 +54,13 @@ layout: default
         <div class="content-container">
             <!-- Main content column -->
             <div class="main-content">
-                {{ content | split: 'Broad Topics' | first | markdownify }}
+                {% assign call_for_abstracts = content | split: 'Broad Topics' | first %}
+                {{ call_for_abstracts | markdownify }}
             </div>
 
             <!-- Sidebar column for Broad Topics -->
             <div class="sidebar">
-                <h2 class="h5">Broad Topics
+                <h2 class="h5">Broad Topics</h2>
                 {% assign broad_topics_content = content | split: 'How to Apply' | first | split: 'Broad Topics' | last %}
                 {{ broad_topics_content | markdownify }}
             </div>
@@ -76,6 +77,7 @@ layout: default
         </div>
     </div>
 </main>
+
 
 
 
