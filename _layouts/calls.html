@@ -36,7 +36,8 @@ layout: default
 <main class="my-4">
     <div class="container">
         <h1 class="display-5">{{ page.title }}</h1>
-        
+        <hr class="my-4"> <!-- 将横线移动到这里，紧跟着标题 -->
+
         <!-- Main content and sidebar columns -->
         <div class="content-container">
             <!-- Main content column for Call for abstracts and How to Apply -->
@@ -48,16 +49,21 @@ layout: default
                 
                 <h2>How to Apply</h2>
                 {% assign how_to_apply_content = content | split: 'How to Apply' | last | split: 'Call for satellites' | first %}
-                <!-- Remove unwanted </h2> -->
                 {{ how_to_apply_content | remove: '</h2>' | markdownify }}
             </div>
 
             <!-- Sidebar column for Topics -->
             <div class="sidebar">
                 <h2 class="h5">Topics</h2>
-                {% assign topics_content = content | split: 'Topics' | last | split: 'Call for satellites' | first %}
-                <!-- Convert to bullet points and remove unwanted </h2> -->
-                {{ topics_content | remove: '</h2>' | markdownify }}
+                <ul>
+                    {% assign topics_content = content | split: 'Topics' | last | split: 'Call for satellites' | first %}
+                    <!-- 将列表格式转换为无序列表并移除序号 -->
+                    {% for topic in topics_content | strip_html | split: '\n' %}
+                        {% if topic != "" %}
+                            <li>{{ topic | strip_newlines }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
             </div>
         </div>
 
@@ -68,7 +74,6 @@ layout: default
             <div class="col-md-12">
                 <h2>Call for satellites</h2>
                 {% assign call_for_satellites_content = content | split: 'Call for satellites' | last | split: 'Important dates' | first %}
-                <!-- Remove unwanted </h2> -->
                 {{ call_for_satellites_content | remove: '</h2>' | markdownify }}
             </div>
         </div>
@@ -80,12 +85,12 @@ layout: default
             <div class="col-md-12">
                 <h2>Important dates</h2>
                 {% assign important_dates_content = content | split: 'Important dates' | last %}
-                <!-- Remove unwanted </h2> -->
                 {{ important_dates_content | remove: '</h2>' | markdownify }}
             </div>
         </div>
     </div>
 </main>
+
 
 
 
