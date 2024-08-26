@@ -59,15 +59,17 @@ layout: default
     }
 </style>
 
-<!-- 使用JavaScript移除分号和句号 -->
+<!-- 使用JavaScript移除分号、句号以及箭头 -->
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const listItems = document.querySelectorAll('.bullet-list li');
-        listItems.forEach(function(item) {
-            item.textContent = item.textContent.replace(/[;.]$/, ''); // 移除末尾的分号和句号
-        });
+document.addEventListener("DOMContentLoaded", function() {
+    const listItems = document.querySelectorAll('.bullet-list li');
+    listItems.forEach(function(item) {
+        // 移除末尾的分号、句号和箭头
+        item.textContent = item.textContent.replace(/[,.;→]+$/, '');
     });
+});
 </script>
+
 
 <main class="my-4">
     <div class="container">
