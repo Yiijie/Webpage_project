@@ -36,13 +36,14 @@ layout: default
 <main class="my-4">
     <div class="container">
         <h1 class="display-5">{{ page.title }}</h1>
-        
+        <hr class="my-4"> <!-- 横线移到正确位置 -->
+
         <!-- Main content and sidebar columns -->
         <div class="content-container">
             <!-- Main content column for Call for abstracts and How to Apply -->
             <div class="main-content">
-                <!-- 只保留一条横线 -->
-                {{ content | split: 'Topics' | first | markdownify }}
+                {% assign main_content_without_topics = content | split: 'Topics' | first %}
+                {{ main_content_without_topics | markdownify }}
 
                 <hr class="my-4"> <!-- Add a horizontal line before How to Apply -->
                 
@@ -55,8 +56,9 @@ layout: default
             <div class="sidebar">
                 <h2 class="h5">Topics</h2>
                 <ul>
-                    <!-- 使用原始无序列表呈现 Topics -->
-                    {{ content | split: 'Topics' | last | split: 'How to Apply' | first | markdownify }}
+                    {% assign topics_content = content | split: 'Topics' | last | split: 'How to Apply' | first %}
+                    {% assign topics_list = topics_content | markdownify %}
+                    {{ topics_list | remove: '1.' | remove: '2.' | remove: '3.' | remove: '4.' | remove: '5.' | remove: '6.' | remove: '7.' | remove: '8.' | remove: '9.' | remove: '10.' | remove: '11.' | remove: '12.' | remove: '13.' | remove: '14.' | remove: '15.' | remove: '16.' | remove: '17.' | remove: '18.' | remove: '19.' | remove: '20.' | remove: '21.' | remove: '22.' | remove: '23.' | remove: '24.' | remove: '25.' | remove: '26.' | remove: '27.' | remove: '28.' | remove: '29.' | remove: '30.' | remove: '31.' }}
                 </ul>
             </div>
         </div>
@@ -84,6 +86,7 @@ layout: default
         </div>
     </div>
 </main>
+
 
 
 
