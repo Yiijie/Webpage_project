@@ -28,13 +28,14 @@ layout: default
         padding-left: 20px;
     }
 
-    /* 去掉 Topics 列表的符号 */
+    /* 修正 Topics 列表使用圆点而非数字 */
     .bullet-list {
-        list-style-type: none; /* 去掉圆点样式 */
-        padding-left: 0; /* 移除左侧填充 */
+        list-style-type: disc; /* 使用圆点样式 */
+        padding-left: 20px; /* 增加左侧填充，使圆点对齐 */
     }
 
     .bullet-list li {
+        list-style-type: disc !important; /* 强制使用圆点样式 */
         margin-bottom: 5px; /* 增加列表项之间的间距 */
     }
 
