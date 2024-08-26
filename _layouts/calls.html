@@ -40,8 +40,7 @@ layout: default
         {% else %}
         <h1 class="display-5">{{ page.title }}</h1>
         {% endif %}
-        
-        <!-- 按钮 -->
+
         <div class="row">
             <div class="mt-12">
                 {% assign buttons = site.data.calls.buttons %}
@@ -61,7 +60,8 @@ layout: default
             <!-- Sidebar column for Broad Topics -->
             <div class="sidebar">
                 <h2 class="h5">Broad Topics</h2>
-                {{ content | split: 'How to Apply' | first | split: 'Broad Topics' | last | markdownify }}
+                {% assign broad_topics_content = content | split: 'How to Apply' | first | split: 'Broad Topics' | last %}
+                {{ broad_topics_content | markdownify }}
             </div>
         </div>
 
@@ -70,7 +70,8 @@ layout: default
         <!-- Single column layout for remaining content -->
         <div class="row">
             <div class="col-md-12">
-                {{ content | split: 'How to Apply' | last | markdownify }}
+                {% assign remaining_content = content | split: 'How to Apply' | last %}
+                {{ remaining_content | markdownify }}
             </div>
         </div>
     </div>
