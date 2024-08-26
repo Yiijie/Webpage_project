@@ -5,6 +5,34 @@ layout: default
 {% include metadata.liquid %}
 {% include header.html %}
 
+<style>
+    main {
+        padding-top: 70px;
+    }
+    /* Flexbox layout to split content into two columns */
+    .content-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .main-content {
+        flex: 0 0 65%; /* Left side content takes up 65% */
+        padding-right: 20px;
+    }
+    .sidebar {
+        flex: 0 0 30%; /* Right side content takes up 30% */
+        background-color: #f8f9fa; /* Optional: Add a background color */
+        padding-left: 20px;
+    }
+    @media (max-width: 768px) {
+        .main-content, .sidebar {
+            flex: 0 0 100%; /* On small screens, both columns take up 100% width */
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+</style>
+
 <main class="my-4">
     <div class="container">
         {% if page.title == "Calls" %}
