@@ -1,10 +1,5 @@
-# buttons:
-#   - text: Apply here
-#     url: https://TBD
-#     disabled: true
-
-sample_abstract:
-  text: here
-  url: _data/NetSci2025_sample_abstract.pdf
-  download: true
+buttons:
+  - text: Download Sample Abstract
+    url: _data/NetSci2025_sample_abstract.pdf
+    download: true
 
