@@ -59,10 +59,10 @@ layout: default
 
             <!-- Sidebar column for Broad Topics -->
             <div class="sidebar">
-            <h2 class="h5">Broad Topics</h2>
-            {% assign sidebar_content = content | split: 'How to Apply' | first | split: 'Broad Topics' | last %}
-            {% assign sidebar_content_cleaned = sidebar_content | remove: '</h2>' %}
-            {{ sidebar_content_cleaned | markdownify }}
+                <h2 class="h5">Broad Topics</h2>
+                {% assign sidebar_content = content | split: 'How to Apply' | first | split: 'Broad Topics' | last %}
+                {% assign sidebar_content_cleaned = sidebar_content | remove: '</h2>' %}
+                {{ sidebar_content_cleaned | markdownify }}
             </div>
         </div>
 
@@ -71,8 +71,11 @@ layout: default
         <!-- Single column layout for remaining content -->
         {% assign remaining_content = content | split: 'How to Apply' | last %}
         {% assign call_for_satellites_content = remaining_content | split: 'Call for satellites' %}
-        {% assign how_to_apply_content = call_for_satellites_content[0] | replace: '</h2>', '' %}
+        {% assign how_to_apply_content = call_for_satellites_content[0] %}
         {% assign call_for_satellites_and_dates = call_for_satellites_content[1] %}
+
+        <!-- Replace 'here' with the download button -->
+        {% assign how_to_apply_with_link = how_to_apply_content | replace: 'here', '<a href="' | append: site.data.calls.sample_abstract.url | append: '" download>' | append: 'here</a>' %}
         
         <!-- Split Call for Satellites and Important Dates -->
         {% assign satellites_and_dates_split = call_for_satellites_and_dates | split: 'Important dates' %}
@@ -83,7 +86,7 @@ layout: default
         <div class="row">
             <div class="col-md-12">
                 <h2>How to Apply</h2>
-                {{ how_to_apply_content | markdownify }}
+                {{ how_to_apply_with_link | markdownify }}
             </div>
         </div>
 
@@ -107,13 +110,8 @@ layout: default
     </div>
 </main>
 
-
-
-
-
-
-
 <!-- {% include footer.html %} -->
+
 
 
 
