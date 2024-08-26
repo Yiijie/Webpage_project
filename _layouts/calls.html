@@ -5,34 +5,6 @@ layout: default
 {% include metadata.liquid %}
 {% include header.html %}
 
-<style>
-    main {
-        padding-top: 70px;
-    }
-    /* Flexbox layout to split content into two columns */
-    .content-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    .main-content {
-        flex: 0 0 65%; /* Left side content takes up 65% */
-        padding-right: 20px;
-    }
-    .sidebar {
-        flex: 0 0 30%; /* Right side content takes up 30% */
-        background-color: #f8f9fa; /* Optional: Add a background color */
-        padding-left: 20px;
-    }
-    @media (max-width: 768px) {
-        .main-content, .sidebar {
-            flex: 0 0 100%; /* On small screens, both columns take up 100% width */
-            padding-right: 0;
-            padding-left: 0;
-        }
-    }
-</style>
-
 <main class="my-4">
     <div class="container">
         {% if page.title == "Calls" %}
@@ -40,6 +12,8 @@ layout: default
         {% else %}
         <h1 class="display-5">{{ page.title }}</h1>
         {% endif %}
+        
+        <!-- 按钮 -->
         <div class="row">
             <div class="mt-12">
                 {% assign buttons = site.data.calls.buttons %}
@@ -49,37 +23,31 @@ layout: default
             </div>
         </div>
 
-        <!-- Split content for "Broad Topics" -->
-        {% assign content_parts = content | split: '## Broad Topics' %}
-        {% assign first_part = content_parts[0] %}
-        {% assign second_part = content_parts[1] | split: '## How to Apply' %}
-        {% assign broad_topics_content = second_part[0] %}
-        {% assign remaining_content = second_part[1] %}
-
-        <!-- Main content and sidebar columns for "Call for abstracts" and "Broad Topics" -->
+        <!-- Main content and sidebar columns -->
         <div class="content-container">
             <!-- Main content column -->
             <div class="main-content">
-                {{ first_part | markdownify }}
+                {{ content | split: 'Broad Topics' | first | markdownify }}
             </div>
 
-            <!-- Sidebar column for "Broad Topics" -->
+            <!-- Sidebar column for Broad Topics -->
             <div class="sidebar">
                 <h2 class="h5">Broad Topics</h2>
-                {{ broad_topics_content | markdownify }}
+                {{ content | split: 'How to Apply' | first | split: 'Broad Topics' | last | markdownify }}
             </div>
         </div>
 
         <hr class="my-4">
 
-        <!-- Display remaining content in a single column -->
+        <!-- Single column layout for remaining content -->
         <div class="row">
             <div class="col-md-12">
-                {{ remaining_content | markdownify }}
+                {{ content | split: 'How to Apply' | last | markdownify }}
             </div>
         </div>
     </div>
 </main>
+
 
 
 <!-- {% include footer.html %} -->
