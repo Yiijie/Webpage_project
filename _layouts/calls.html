@@ -74,7 +74,7 @@ layout: default
         <div class="row">
             <div class="col-md-12">
             <h2>How to Apply</h2>
-            {{ content | split: 'How to Apply' | last | markdownify }}
+            {{ apply_content | remove: '</h2>' }}
             </div>
         </div>
     </div>
