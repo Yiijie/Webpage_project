@@ -64,11 +64,12 @@ layout: default
 document.addEventListener("DOMContentLoaded", function() {
     const listItems = document.querySelectorAll('.bullet-list li');
     listItems.forEach(function(item) {
-        // 移除末尾的分号、句号和箭头
-        item.textContent = item.textContent.replace(/[,.;→]+$/, '');
+        // 移除末尾的句号和箭头
+        item.textContent = item.textContent.replace(/[.;→]+$/, '');
     });
 });
 </script>
+
 
 
 <main class="my-4">
