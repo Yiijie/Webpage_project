@@ -59,10 +59,10 @@ layout: default
 
             <!-- Sidebar column for Broad Topics -->
             <div class="sidebar">
-            <h2 class="h5">Broad Topics</h2>
-            {% assign sidebar_content = content | split: 'How to Apply' | first | split: 'Broad Topics' | last %}
-            {% assign sidebar_content_cleaned = sidebar_content | remove: '</h2>' %}
-            {{ sidebar_content_cleaned | markdownify }}
+                <h2 class="h5">Broad Topics</h2>
+                {% assign sidebar_content = content | split: 'How to Apply' | first | split: 'Broad Topics' | last %}
+                {% assign sidebar_content_cleaned = sidebar_content | remove: '</h2>' %}
+                {{ sidebar_content_cleaned | markdownify }}
             </div>
         </div>
 
@@ -84,12 +84,10 @@ layout: default
             <div class="col-md-12">
                 <h2>How to Apply</h2>
                 {{ how_to_apply_content | markdownify }}
-                <p>You can see a sample abstract <a href="{{ site.data.calls.sample_abstract.url }}">{{ site.data.calls.sample_abstract.text }}</a>.</p>
+                <p>You can see a sample abstract <a href="{{ site.data.calls.sample_abstract.url }}" download>{{ site.data.calls.sample_abstract.text }}</a>.</p>
             </div>
         </div>
-        
-        <hr class="my-4">
-        
+
         <!-- Call for Satellites Section -->
         <div class="row">
             <div class="col-md-12">
@@ -98,7 +96,6 @@ layout: default
             </div>
         </div>
 
-        <hr class="my-4">
         <!-- Important Dates Section -->
         <div class="row">
             <div class="col-md-12">
@@ -108,6 +105,7 @@ layout: default
         </div>
     </div>
 </main>
+
 
 
 
