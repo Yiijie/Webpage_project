@@ -9,22 +9,26 @@ layout: default
     main {
         padding-top: 70px;
     }
+
     /* Flexbox layout to split content into两部分 */
     .content-container {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
     }
+
     .main-content {
         flex: 0 0 65%; /* 左侧内容占65% */
         padding-right: 20px;
     }
+
     .sidebar {
         flex: 0 0 30%; /* 右侧内容占30% */
         background-color: #f8f9fa; /* 可选：添加背景色 */
         padding-left: 20px;
     }
-        /* 修正 Topics 列表使用圆点而非数字 */
+
+    /* 修正 Topics 列表使用圆点而非数字 */
     .bullet-list {
         list-style-type: disc; /* 使用圆点样式 */
         padding-left: 20px; /* 增加左侧填充，使圆点对齐 */
@@ -40,6 +44,7 @@ layout: default
         margin-top: 20px;
         margin-bottom: 20px;
     }
+
     @media (max-width: 768px) {
         .main-content, .sidebar {
             flex: 0 0 100%; /* 小屏幕上，两列占100%宽度 */
@@ -47,14 +52,13 @@ layout: default
             padding-left: 0;
         }
     }
-
-    
 </style>
 
 <main class="my-4">
     <div class="container">
         <h1 class="display-5">{{ page.title }}</h1>
-        <hr class="my-4" style="margin-top: 20px;"> <!-- 调整横线位置 -->
+        <!-- 只保留这一条横线 -->
+        <hr class="my-4"> 
 
         <!-- Main content and sidebar columns -->
         <div class="content-container">
@@ -63,19 +67,19 @@ layout: default
                 {% assign main_content_without_topics = content | split: 'Topics' | first %}
                 {{ main_content_without_topics | markdownify }}
 
-                <hr class="my-4"> <!-- Add a horizontal line before How to Apply -->
-                
+                <!-- 添加 How to Apply 部分 -->
+                <hr class="my-4">
                 <h2>How to Apply</h2>
                 {% assign how_to_apply_content = content | split: 'How to Apply' | last | split: 'Call for satellites' | first %}
-                {{ how_to_apply_content | markdownify }}
+                {{ how_to_apply_content | remove: '</h2>' | markdownify }} <!-- 删除多余的 </h2> -->
             </div>
 
             <!-- Sidebar column for Topics -->
             <div class="sidebar">
                 <h2 class="h5">Topics</h2>
-                <ul class="bullet-list"> <!-- Add a class for bullet list -->
+                <ul class="bullet-list"> <!-- 使用无序列表样式 -->
                 {% assign topics_content = content | split: 'Topics' | last | split: 'Call for satellites' | first %}
-                {{ topics_content | markdownify }}
+                {{ topics_content | remove: '</h2>' | markdownify }} <!-- 确保没有错误的 </h2> -->
                 </ul>
             </div>
         </div>
@@ -87,7 +91,7 @@ layout: default
             <div class="col-md-12">
                 <h2>Call for satellites</h2>
                 {% assign call_for_satellites_content = content | split: 'Call for satellites' | last | split: 'Important dates' | first %}
-                {{ call_for_satellites_content | markdownify }}
+                {{ call_for_satellites_content | remove: '</h2>' | markdownify }} <!-- 确保没有错误的 </h2> -->
             </div>
         </div>
 
@@ -98,12 +102,11 @@ layout: default
             <div class="col-md-12">
                 <h2>Important dates</h2>
                 {% assign important_dates_content = content | split: 'Important dates' | last %}
-                {{ important_dates_content | markdownify }}
+                {{ important_dates_content | remove: '</h2>' | markdownify }} <!-- 确保没有错误的 </h2> -->
             </div>
         </div>
     </div>
 </main>
-
 
 
 
